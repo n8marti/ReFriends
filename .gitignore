@@ -1,0 +1,4 @@
+RF_env/
+__pycache__/
+*.key
+*.sqlite3

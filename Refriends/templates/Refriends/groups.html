@@ -1,0 +1,22 @@
+{% extends "Refriends/base.html" %}
+
+{% block page_header %}
+<h1>Groups</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+<ul>
+  {% for group in groups %}
+    {% if user.username in group.members or group.all_users == True %}      
+      <li><h4>
+        <a href="{% url 'Refriends:group' group.id %}">{{ group }}</a>
+      <h4></li>
+    {% endif %}
+  {% empty %}
+    <li><h3>No groups have been added yet.</h3></li>
+  {% endfor %}
+</ul>
+  
+<h5><a href="{% url 'Refriends:new_group' %}">Add a new group</a></h5>
+{% endblock content %}

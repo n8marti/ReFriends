@@ -22,10 +22,6 @@ class Message(models.Model):
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    reply = models.BooleanField(default=False)
-    reply_id = models.IntegerField(default=00)
-    if reply_id == False:
-        reply_id.blank = True
 
     def __str__(self):
         """Return a string represenation of the model"""

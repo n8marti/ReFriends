@@ -1,1 +1,1 @@
-web: gunicorn Refriends.wsgi --log-file -
+web: gunicorn ReFriends.wsgi --log-file -

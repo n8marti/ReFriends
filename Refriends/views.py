@@ -75,7 +75,7 @@ def group(request, group_id):
         "all_users": all_users,
     }
 
-    if request.user.username in members or all_users == True:
+    if request.user.username in members or all_users:
         return render(request, "Refriends/group.html", context)
     else:
         return redirect("Refriends:groups")

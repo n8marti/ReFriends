@@ -10,3 +10,5 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
 fi
 # Connect via ssh to screen at destination to allow sessions to be detachable.
 ssh -t "$1" screen -d -R "${2:-default}"
+# Run startup shell script
+bash startup.sh

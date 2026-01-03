@@ -1,26 +1,19 @@
-{% extends 'Refriends/base.html' %}
-{% load bootstrap4 %}
-
-{% block page_header %}
+{% extends 'Refriends/base.html' %} {% load bootstrap4 %} {% block page_header %}
 <h1>{{ group }}</h1>
-{% endblock page_header %}
-
-{% block content %}
+{% endblock page_header %} {% block content %}
 
 <h3>
-  <a href="{% url 'Refriends:new_message' group.id %}">Post a new message</a>
+    <a href="{% url 'Refriends:new_message' group.id %}">Post a new message</a>
 </h3>
 
 <ul>
-{% for message in messages %}
-  <div class="card mb-3">
-    <h4 class="card-header">{{ message.author }}  //  {{ message.date_added|date:'l, F dS, Y g:i A' }}</h4>
-    <div class= "card-body">
-    {{ message.text|linebreaks }}
+    {% for message in messages %}
+    <div class="card mb-3">
+        <h4 class="card-header">{{ message.author }} // {{ message.date_added|date:'l, F dS, Y g:i A'}}</h4>
+        <div class="card-body">{{ message.text|linebreaks }}</div>
     </div>
-    </div>
-{% empty %}
-  <h3>There are no messages in this group yet.</h3>
-{% endfor %}
+    {% empty %}
+    <h3>There are no messages in this group yet.</h3>
+    {% endfor %}
 </ul>
 {% endblock content %}

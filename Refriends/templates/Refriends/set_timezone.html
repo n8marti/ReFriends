@@ -1,24 +1,18 @@
-{% extends "Refriends/base.html" %}
-{% load bootstrap4 %}
-
-{% block page_header %}
-<h1>Set Time Zone</h1>
-{% endblock page_header %}
-
-
-{% block content %}
-{% load tz %}
-{% get_current_timezone as TIME_ZONE %}
-<form action="{% url 'Refriends:set_timezone' %}" method="POST">
+{% extends "Refriends/base.html" %} {% load bootstrap4 %} {%block page_header%}
+<h1>Set your time zone</h1>
+{% endblock page_header %} {% block content %} {% load tz %} {% get_current_timezone as TIME_ZONE %}
+<form action="{% url 'Refriends:set_timezone' %}" method="POST" class="form">
     {% csrf_token %}
     <label for="timezone">Time zone:</label>
     <select name="timezone">
-        {% for UTCOffset, tz in timezones.items %}
-        <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %} class="option option-primary">{{ UTCOffset }}</option>
+        {% for tz in timezones %}
+        <option value="{{ tz }}" {% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
         {% endfor %}
     </select>
     {% buttons %}
     <button name="submit" class="btn btn-primary">Set</button>
     {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'Refriends:groups' %}" />
 </form>
+
 {% endblock content %}

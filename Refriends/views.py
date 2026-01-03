@@ -1,5 +1,7 @@
+import pytz
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 
 from .forms import GroupForm, MessageForm
 from .models import Group
@@ -37,10 +39,10 @@ common_timezones = {
 def set_timezone(request):
     if request.method == "POST":
         request.session["django_timezone"] = request.POST["timezone"]
-        return redirect("/")
+        return redirect("Refriends:groups")
     else:
         return render(
-            request, "Refriends/set_timezone.html", {"timezones": common_timezones}
+            request, "Refriends/set_timezone.html", {"timezones": pytz.common_timezones}
         )
 
 
@@ -67,12 +69,14 @@ def group(request, group_id):
     messages = group.message_set.order_by("-date_added")
     members = group.members
     all_users = group.all_users
+    user_tz = request.session.get("timezone", "UTC")
 
     context = {
         "group": group,
         "messages": messages,
         "members": members,
         "all_users": all_users,
+        "user_tz": user_tz,
     }
 
     if request.user.username in members or all_users:

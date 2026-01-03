@@ -3,4 +3,4 @@ git pull
 . RF_env/bin/activate
 python manage.py makemigrations
 python manage.py migrate
-python manage.py runserver 174.138.84.110:80
+python manage.py runserver 174.138.84.110:8000

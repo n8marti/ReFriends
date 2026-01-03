@@ -5,7 +5,10 @@ from django.db import models
 class Group(models.Model):
     """A group to chat in"""
 
-    text = models.CharField(max_length=50)
+    text = models.CharField(
+        max_length=50,
+        blank=True,
+    )
     date_added = models.DateTimeField(auto_now_add=True)
     members = models.CharField(max_length=200)
     all_users = models.BooleanField()

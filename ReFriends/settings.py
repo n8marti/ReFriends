@@ -37,9 +37,7 @@ else:
 
 ALLOWED_HOSTS = [
     "localhost",
-    "192.168.*",
-    "marti-Aspire.church3434.org",
-    "marti-Aspire.local",
+    "174.138.84.110",
 ]
 
 

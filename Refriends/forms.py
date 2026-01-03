@@ -13,7 +13,7 @@ class GroupForm(forms.ModelForm):
         min_length=0,
         label=_("Members"),
         strip=False,
-        help_text="Write the usernames of those who will have access to this group, with correct case and separated by commas.",
+        help_text="Write the usernames of those who will have access to this group, with correct case and separated by commas. If you are allowing all user via the checkbox, write None.",
     )
     all_users = forms.CheckboxInput()
 

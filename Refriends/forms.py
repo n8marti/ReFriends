@@ -10,6 +10,7 @@ class GroupForm(forms.ModelForm):
         strip=False,
     )
     members = forms.CharField(
+        min_length=0,
         label=_("Members"),
         strip=False,
         help_text="Write the usernames of those who will have access to this group, with correct case and separated by commas.",

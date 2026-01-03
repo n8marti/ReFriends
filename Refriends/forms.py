@@ -10,7 +10,6 @@ class GroupForm(forms.ModelForm):
         strip=False,
     )
     members = forms.CharField(
-        blank=True,
         min_length=0,
         label=_("Members"),
         strip=False,

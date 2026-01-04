@@ -70,7 +70,7 @@ class UserCreationForm(forms.ModelForm):
     def clean_identification(self):
         identification = self.cleaned_data.get("identification")
         #         Check if user is allowed to register.
-        with open('users.key') as f:
+        with open("~/ReFriends/users.key", "r") as f:
             if identification != f.read():
                 raise forms.ValidationError(
                     self.error_messages["bad_ID"],

@@ -1,4 +1,4 @@
-{% extends 'Refriends/base.html' %} {% load bootstrap4 %} {% block page_header %}
+{% extends 'Refriends/base.html' %} {% load bootstrap4 %} {% load tz %} {% get_current_timezone as TIME_ZONE %} {% block page_header %}
 <h1>{{ group }}</h1>
 {% endblock page_header %} {% block content %}
 
@@ -9,7 +9,7 @@
 <ul>
     {% for message in messages %}
     <div class="card mb-3">
-        <h4 class="card-header">{{ message.author }} // {{ message.date_added|date:'l, F dS, Y g:i A'}}</h4>
+        <h4 class="card-header">{{ message.author }} // {{ message.date_added|date:'l, F dS, Y g:i A'}} {{ TIME_ZONE }} time</h4>
         <div class="card-body">{{ message.text|linebreaks }}</div>
     </div>
     {% empty %}

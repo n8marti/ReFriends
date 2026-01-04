@@ -78,7 +78,8 @@ def group(request, group_id):
         "all_users": all_users,
         "user_tz": user_tz,
     }
-
+    members = str(members).split(", ")
+    print(members)
     if request.user.username in members or all_users:
         return render(request, "Refriends/group.html", context)
     else:

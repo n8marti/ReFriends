@@ -1,5 +1,7 @@
 {% extends "Refriends/base.html" %}
 
+{% load custom_filters %}
+
 {% block page_header %}
 <h1>Groups</h1>
 {% endblock page_header %}
@@ -8,10 +10,14 @@
 
 <ul>
   {% for group in groups %}
-    {% if user.username in group.members.split(', ') or group.all_users == True %}
-      <li><h4>
-        <a href="{% url 'Refriends:group' group.id %}">{{ group }}</a>
-      <h4></li>
+    {% if group.members %}
+        {% with members=group.members|split:", " %}
+          {% if user.username in members or group.all_users %}
+            <li><h4>
+                <a href="{% url 'Refriends:group' group.id %}">{{ group }}</a>
+            <h4></li>
+          {% endif %}
+        {% endwith %}
     {% endif %}
   {% empty %}
     <li><h3>No groups have been added yet.</h3></li>

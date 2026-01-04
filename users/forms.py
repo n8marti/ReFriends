@@ -69,12 +69,13 @@ class UserCreationForm(forms.ModelForm):
 
     def clean_identification(self):
         identification = self.cleaned_data.get("identification")
-        #         Check if users is allowed to register.
-        if identification != "Refresh1025!":
-            raise forms.ValidationError(
-                self.error_messages["bad_ID"],
-                code="bad_ID",
-            )
+        #         Check if user is allowed to register.
+        with open('users.key') as f:
+            if identification != f.read():
+                raise forms.ValidationError(
+                    self.error_messages["bad_ID"],
+                    code="bad_ID",
+                )
 
     def _post_clean(self):
         super()._post_clean()

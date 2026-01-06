@@ -72,8 +72,6 @@ class UserCreationForm(forms.ModelForm):
         #         Check if user is allowed to register.
         with open("users.key", "r") as f:
             id = f.read().strip()
-            print(id)
-            print(identification)
             if identification != id:
                 raise forms.ValidationError(
                     self.error_messages["bad_ID"],

@@ -34,7 +34,7 @@ elif os.environ.get("DEBUG") == "FALSE":
     DEBUG = False
 else:
     DEBUG = False
-
+DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "174.138.84.110",

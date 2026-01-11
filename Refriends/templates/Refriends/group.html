@@ -1,6 +1,6 @@
 {% extends 'Refriends/base.html' %} {% load bootstrap4 %} {% load tz %} {% get_current_timezone as TIME_ZONE %} {% block page_header %}
 <h1>{{ group }}</h1>
-{% endblock page_header %} {% block content %} {% if not None in group.members %} {{ group.members }} {% endif %}
+{% endblock page_header %} {% block content %} {% if not group.members == None %} {{ group.members }} {% endif %}
 
 <h3>
     <a href="{% url 'Refriends:new_message' group.id %}">Post a new message</a>

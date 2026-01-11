@@ -77,6 +77,7 @@ def group(request, group_id):
         "members": members,
         "all_users": all_users,
         "user_tz": user_tz,
+        "current_timezone": timezone.get_current_timezone_name(),
     }
     members = str(members).split(", ")
     if request.user.username in members or all_users:

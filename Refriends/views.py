@@ -69,15 +69,12 @@ def group(request, group_id):
     messages = group.message_set.order_by("-date_added")
     members = group.members
     all_users = group.all_users
-    user_tz = request.session.get("timezone", "UTC")
 
     context = {
         "group": group,
         "messages": messages,
         "members": members,
         "all_users": all_users,
-        "user_tz": user_tz,
-        "current_timezone": timezone.get_current_timezone_name(),
     }
     members = str(members).split(", ")
     if request.user.username in members or all_users:

@@ -2,6 +2,8 @@
 <h1>{{ group }}</h1>
 {% endblock page_header %} {% block content %}
 
+<p>{{ member for member in group.members }}</p>
+
 <h3>
     <a href="{% url 'Refriends:new_message' group.id %}">Post a new message</a>
 </h3>

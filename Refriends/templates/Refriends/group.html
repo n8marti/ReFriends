@@ -9,7 +9,7 @@
 <ul>
     {% for message in messages %}
     <div class="card mb-3">
-        <h4 class="card-header">{{ message.author }} // {{ message.date_added|date:'l, F dS, Y g:i A'}} {% if TIME_ZONE != '' %} /{{ TIME_ZONE }}/ time{% endif %}</h4>
+        <h4 class="card-header">{{ message.author }} // {{ message.date_added|date:'l, F dS, Y g:i A'}} {% if len(TIME_ZONE) != 0 %} /{{ TIME_ZONE }}/ time{% endif %}</h4>
         <div class="card-body">{{ message.text|linebreaks }}</div>
     </div>
     {% empty %}

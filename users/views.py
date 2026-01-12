@@ -17,7 +17,7 @@ def register(request):
         if form.is_valid():
             new_user = form.save()
             login(request, new_user)
-            return redirect("Refriends:groups")
+            return redirect("Refriends:info")
     # Display a blank/invalid form
 
     context = {"form": form}

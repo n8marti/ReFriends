@@ -123,4 +123,5 @@ def new_message(request, group_id):
 
 @login_required
 def info(request):
+    """Info page about the project."""
     return render(request, "Refriends/info.html")

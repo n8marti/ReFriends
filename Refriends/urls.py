@@ -18,6 +18,4 @@ urlpatterns = [
     path("new_message/<int:group_id>/", views.new_message, name="new_message"),
     # Info page
     path("info/", views.info, name="info"),
-    # Set TImezone page
-    path("set_timezone/", views.set_timezone, name="set_timezone"),
 ]

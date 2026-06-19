@@ -9,7 +9,17 @@
     {% buttons %}
     <button name="submit" class="btn btn-primary">Log in</button>
     {% endbuttons %}
+    <input type="hidden" name="timezone" id="id_timezone">
     <input type="hidden" name="next" value="{% url 'Refriends:groups' %}" />
 </form>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const tzInput = document.getElementById("id_timezone");
+  if (tzInput) {
+    tzInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  }
+});
+</script>
 
 {% endblock content %}

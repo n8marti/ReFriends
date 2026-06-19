@@ -8,8 +8,9 @@ class TimezoneMiddleware:
 
     def __call__(self, request):
         tzname = request.session.get("django_timezone")
-        if tzname:
+        if tzname in pytz.all_timezones:
             timezone.activate(pytz.timezone(tzname))
         else:
             timezone.deactivate()
-        return self.get_response(request)
+        response = self.get_response(request)
+        return response

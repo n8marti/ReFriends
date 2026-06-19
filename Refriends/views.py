@@ -48,10 +48,7 @@ def set_timezone(request):
 
 def index(request):
     """The home page for ReFriends"""
-    if not request.user.is_authenticated:
-        return render(request, "Refriends/index.html")
-    else:
-        return redirect("Refriends:groups")
+    return render(request, "Refriends/index.html")
 
 
 @login_required
